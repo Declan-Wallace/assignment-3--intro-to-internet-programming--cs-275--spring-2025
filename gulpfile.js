@@ -24,3 +24,28 @@ const lintCSS = () => {
             })
         );
 };
+
+//JavaScript to ES5
+const transpileJS = () => {
+    return src(`scripts/main.js`)
+        .pipe(sourcemaps.init())
+        .pipe(
+            babel({
+                presets: [`@babel/preset-env`],
+            })
+        )
+        .pipe(sourcemaps.write(`.`))
+        .pipe(dest(`prod/scripts`));
+};
+
+// Compress JavaScript
+const compressJS = () => {
+    return src(`scripts/main.js`)
+        .pipe(
+            babel({
+                presets: [`@babel/preset-env`],
+            })
+        )
+        .pipe(uglify())
+        .pipe(dest(`prod/scripts`));
+};
