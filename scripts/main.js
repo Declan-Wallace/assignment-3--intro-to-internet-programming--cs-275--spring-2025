@@ -61,3 +61,14 @@ document.addEventListener(`DOMContentLoaded`, () => {
     const hideMenu = () => {
         menu.classList.remove(`active`);
     };
+
+    // Add event listeners
+    showMenuTrigger.addEventListener(`click`, (e) => {
+        e.preventDefault();
+        toggleMenu();
+    });
+
+    showModalTrigger.addEventListener(`click`, (e) => {
+        e.preventDefault();
+        showModal();
+    });
