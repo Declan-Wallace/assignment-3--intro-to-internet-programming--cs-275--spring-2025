@@ -112,3 +112,77 @@ blockquote {
   pointer-events: auto;
   transform: translate(-50%, -50%) scale(1);
 }
+
+/* Create menus (drop down and side tray) */
+#menu {
+  background: dodgerblue;
+  z-index: 40;
+}
+
+/* Drop down menu styling */
+#menu.drop-down {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  width: calc(100% - 2rem);
+  max-width: 400px;
+  transform: translateX(-50%) translateY(-100%);
+  pointer-events: none;
+  transition: transform 500ms ease;
+}
+
+#menu.drop-down.active {
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+/* Side tray menu styling */
+#menu.side-tray {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 210px;
+  height: 18%;
+  transform: translateX(-100%);
+  pointer-events: auto;
+  opacity: 1;
+  transition: transform 500ms ease;
+  z-index: 40;
+}
+
+#menu.side-tray.active {
+  transform: translateX(0);
+}
+
+/* Menu text */
+#menu ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 0;
+  padding: 1rem;
+}
+
+@media (max-width: 735px) {
+  #menu ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+#menu ul li a {
+  display: inline-block;
+  background: goldenrod;
+  padding: .5rem 1rem;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  transition: background .3s;
+  width: 180px;
+}
+
+#menu ul li a:hover {
+  background: darkgoldenrod;
+}
