@@ -49,3 +49,15 @@ const compressJS = () => {
         .pipe(uglify())
         .pipe(dest(`prod/scripts`));
 };
+
+// Compress CSS
+const compressCSS = () => {
+    return src(`styles/main.css`)
+        .pipe(cleanCSS())
+        .pipe(dest(`prod/styles`));
+};
+
+// Copy index.html to prod
+const copyHTML = () => {
+    return src(`index.html`).pipe(dest(`prod`));
+};
