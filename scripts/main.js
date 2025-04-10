@@ -29,3 +29,35 @@ document.addEventListener(`DOMContentLoaded`, () => {
    `;
         document.body.appendChild(menu);
     }
+
+    // Set viewport threshold
+    let belowThreshold = window.innerWidth < 736;
+
+    // Modal functions
+    const showModal = () => {
+        modalPanel.classList.add(`active`);
+        const modalContent = modalPanel.querySelector(`.modal-content`);
+        if (modalContent && !modalContent.innerHTML.trim()) {
+            modalContent.innerHTML = `<p>Any modal content would go here.</p>`;
+        }
+    };
+
+    const hideModal = () => {
+        modalPanel.classList.remove(`active`);
+    };
+
+    // Menu functions
+    const toggleMenu = () => {
+        if (window.innerWidth < 736) {
+            menu.classList.remove(`drop-down`);
+            menu.classList.add(`side-tray`);
+        } else {
+            menu.classList.remove(`side-tray`);
+            menu.classList.add(`drop-down`);
+        }
+        menu.classList.toggle(`active`);
+    };
+
+    const hideMenu = () => {
+        menu.classList.remove(`active`);
+    };
