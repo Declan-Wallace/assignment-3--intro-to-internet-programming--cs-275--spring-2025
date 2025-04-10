@@ -17,3 +17,36 @@ body {
 nav {
   display: none;
 }
+
+/* Style header and triggers */
+header {
+  background: dodgerblue;
+  color: ghostwhite;
+  height: 80px;
+  position: relative;
+  overflow: hidden;
+  z-index: 50;
+}
+
+#js-triggers {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: auto;
+}
+
+#js-triggers a {
+  color: ghostwhite;
+  text-decoration: none;
+  display: block;
+  padding: .5rem .75rem;
+  border-radius: 4px;
+  transition: background .3s;
+}
+
+#js-triggers a:hover {
+  background: grey;
+}
