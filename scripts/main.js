@@ -72,3 +72,20 @@ document.addEventListener(`DOMContentLoaded`, () => {
         e.preventDefault();
         showModal();
     });
+
+    // Close modal when clicking off
+    if (modalPanel) {
+        modalPanel.addEventListener(`click`, (e) => {
+            if (e.target === modalPanel) {
+                hideModal();
+            }
+        });
+    }
+
+    // Close modal when hitting ESC
+    document.addEventListener(`keydown`, (e) => {
+        if (e.key === `Escape`) {
+            hideModal();
+            hideMenu();
+        }
+    });
