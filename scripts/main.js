@@ -89,3 +89,27 @@ document.addEventListener(`DOMContentLoaded`, () => {
             hideMenu();
         }
     });
+
+    // Reset page after crossing 736px
+    window.addEventListener(`resize`, () => {
+        const isBelow = window.innerWidth < 736;
+        if (isBelow !== belowThreshold) {
+            hideMenu();
+            if (window.innerWidth >= 736) {
+                const headerEl = document.querySelector(`menu`);
+                if (headerEl && menu.parentElement !== headerEl) {
+                    headerEl.appendChild(menu);
+                }
+                menu.classList.remove(`side-tray`);
+                menu.classList.add(`drop-down`);
+            } else {
+                if (menu.parentElement !== document.body) {
+                    document.body.appendChild(menu);
+                }
+                menu.classList.remove(`drop-down`);
+                menu.classList.add(`side-tray`);
+            }
+            belowThreshold = isBelow;
+        }
+    });
+});
