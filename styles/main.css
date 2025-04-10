@@ -88,3 +88,27 @@ blockquote {
   opacity: 1;
   pointer-events: auto;
 }
+
+/* Modal content pane style */
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(.8);
+  background: white;
+  min-width: 400px;
+  width: 60%;
+  max-width: 600px;
+  padding: 2rem;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 500ms ease, opacity 500ms ease;
+  text-align: center;
+}
+
+.modal-panel.active .modal-content {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
