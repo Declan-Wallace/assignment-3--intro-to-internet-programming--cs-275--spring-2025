@@ -61,3 +61,24 @@ const compressCSS = () => {
 const copyHTML = () => {
     return src(`index.html`).pipe(dest(`prod`));
 };
+
+// Create Serve
+const serve = () => {
+    browserSync.init({
+        server: {
+            baseDir: `./`,
+        },
+    });
+    watch(`scripts/main.js`, series(lintJS, transpileJS)).on(`change`, browserSync.reload);
+    watch(`styles/main.css`, lintCSS).on(`change`, browserSync.reload);
+    watch(`index.html`).on(`change`, browserSync.reload);
+};
+
+// Export serve
+exports.serve = series(parallel(lintJS, lintCSS), transpileJS, serve);
+
+// Set prod build as default
+exports.default = series(
+    parallel(lintJS, lintCSS),
+    parallel(compressJS, compressCSS, copyHTML)
+);
