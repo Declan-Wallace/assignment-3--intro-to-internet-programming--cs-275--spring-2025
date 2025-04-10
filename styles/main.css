@@ -50,3 +50,22 @@ header {
 #js-triggers a:hover {
   background: grey;
 }
+
+/* Adjust text on site */
+main {
+  padding: 1rem;
+  height: calc(100% - 80px);
+  overflow-y: auto;
+  background: #f6f6f6;
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+p,
+blockquote {
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
